@@ -6,7 +6,7 @@ import ErrorMessagess from "./ErrorMessagess";
 import { motion } from "framer-motion";
 import RegisterSuccessModal from "./Models/RegisterSuccessModel";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../Services/AuthService"
+import { registerUser } from "../Services/AuthService";
 
 interface RegisterValues {
   name: string;
@@ -25,7 +25,7 @@ const Register: React.FC<registerProps> = ({ setIsLoggedIn }) => {
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const [hide, setHide] = useState<boolean>(true);
+  const [hide, setHide] = useState<boolean>(true)
   const [openRegiterModel, setOpenRegisterModel] = useState<boolean>(false);
 
   const initialValues: RegisterValues = {
