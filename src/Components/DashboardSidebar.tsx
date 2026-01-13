@@ -22,11 +22,11 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  
   const { user } = useSelector((state: RootState) => state.profile);
 
-  
-  const userRole = user?.role || sessionStorage.getItem("role")
+  console.log("user", user);
+
+  const userRole = user?.role || sessionStorage.getItem("role");
 
   useEffect(() => {
     if (!user) dispatch(fetchProfile());
@@ -36,11 +36,10 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
     roleMenus[userRole as "admin" | "subadmin" | "employee"] || [];
 
   const handleLogout = () => {
-  sessionStorage.clear();
-  dispatch(logout());   
-  navigate("/");
-};
-
+    sessionStorage.clear();
+    dispatch(logout());
+    navigate("/");
+  };
 
   return (
     <div
@@ -59,7 +58,10 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
         <div className="w-16 h-16 rounded-full overflow-hidden">
           <img
             className="w-full h-full object-cover"
-            src={getUserImageUrl(user?.image)}
+            src={
+              user?.image ||
+              "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+            }
             alt="Profile"
           />
         </div>
@@ -77,7 +79,7 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
       <ul className="w-9/12 mx-auto space-y-1">
         {menuOptions.map((item, index) => {
           const isActive = location.pathname === item.path;
-          const Icon = item.icon; 
+          const Icon = item.icon;
 
           return (
             <Link
@@ -95,7 +97,7 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
                   isActive ? "text-white" : "text-cyan-500"
                 }`}
               >
-                <Icon /> 
+                <Icon />
               </span>
 
               <li className="font-Poppins text-sm font-medium">{item.name}</li>
