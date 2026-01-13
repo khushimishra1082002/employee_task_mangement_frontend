@@ -22,7 +22,6 @@ const DashboardHeader: React.FC<NavbarProps> = ({ open, setOpen }) => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
 
-  
   const { user } = useSelector((state: RootState) => state.profile);
 
   const [profileOpen, setProfileOpen] = useState(false);
@@ -38,9 +37,9 @@ const DashboardHeader: React.FC<NavbarProps> = ({ open, setOpen }) => {
     if (!user) dispatch(fetchProfile());
   }, [user, dispatch]);
 
-   const handleLogout = () => {
+  const handleLogout = () => {
     sessionStorage.clear();
-    dispatch(logout());   
+    dispatch(logout());
     navigate("/");
   };
 
@@ -81,7 +80,10 @@ const DashboardHeader: React.FC<NavbarProps> = ({ open, setOpen }) => {
               <div className="w-8 h-8 rounded-full  relative">
                 <img
                   className="w-full h-full rounded-full"
-                  src={getUserImageUrl(user?.image)}
+                  src={
+                    user?.image ||
+                    "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+                  }
                   alt="Profile"
                 />
                 <div
