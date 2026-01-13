@@ -32,11 +32,16 @@ const Profile: React.FC = () => {
         <div className="mx-auto w-32 h-32 rounded-full border-4 border-white overflow-hidden">
           <img
             className="w-full h-full object-cover"
-            src={getUserImageUrl(user?.image)}
+            src={
+              user?.image ||
+              "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+            }
             alt="Profile"
           />
         </div>
-        <h4 className="text-2xl font-semibold mt-4 font-Poppins">{user.name}</h4>
+        <h4 className="text-2xl font-semibold mt-4 font-Poppins">
+          {user.name}
+        </h4>
         <span className="text-base bg-gradient-to-r from-teal-400 to-cyan-500 text-white px-3 py-1 rounded-full inline-block mt-2 shadow-md font-Poppins font-semibold capitalize">
           {user.role || "Employee"}
         </span>
@@ -46,11 +51,15 @@ const Profile: React.FC = () => {
       <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-800">
         <div className="flex items-center gap-2 font-Poppins">
           <span className="font-medium">Name:</span>
-          <span className="text-gray-600 font-Poppins text-sm">{user.name}</span>
+          <span className="text-gray-600 font-Poppins text-sm">
+            {user.name}
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <span className="font-medium">Email:</span>
-          <span className="text-gray-600 font-Poppins text-sm">{user.email}</span>
+          <span className="text-gray-600 font-Poppins text-sm">
+            {user.email}
+          </span>
         </div>
         <div className="flex items-center gap-2">
           <span className="font-medium">Password:</span>
@@ -58,7 +67,9 @@ const Profile: React.FC = () => {
         </div>
         <div className="flex items-center gap-2">
           <span className="font-medium">Role:</span>
-          <span className="text-gray-600 font-Poppins text-sm">{user.role || "Employee"}</span>
+          <span className="text-gray-600 font-Poppins text-sm">
+            {user.role || "Employee"}
+          </span>
         </div>
       </div>
 

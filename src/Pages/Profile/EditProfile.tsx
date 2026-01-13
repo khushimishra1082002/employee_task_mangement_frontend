@@ -94,7 +94,7 @@ const EditProfile: React.FC = () => {
                   src={
                     previewImage
                       ? URL.createObjectURL(previewImage) // show selected image
-                      : getUserImageUrl(user?.image) // show current image from backend
+                      : user?.image // show current image from backend
                   }
                   className="w-full h-full object-cover"
                 />
