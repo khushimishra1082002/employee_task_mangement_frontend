@@ -42,7 +42,7 @@ const ChangePassword = () => {
       await changePassword(values);
       alert("Password changed successfully");
       actions.resetForm();
-      navigate("/profiles");
+      navigate("profiles");
     } catch (error: any) {
       alert(error.response?.data?.message || "Something went wrong");
     } finally {
