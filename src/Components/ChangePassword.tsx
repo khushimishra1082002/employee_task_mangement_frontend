@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { motion } from "framer-motion";
 import ErrorMessagess from "../Pages/ErrorMessagess";
 import { changePassword } from "../Services/AuthService";
+import { useNavigate } from "react-router-dom";
+
+interface ChangePasswordValues {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
 
 const ChangePassword = () => {
   const [hide, setHide] = useState(true);
+  const navigate = useNavigate();
 
   const initialValues = {
     currentPassword: "",
@@ -25,12 +33,16 @@ const ChangePassword = () => {
       .required("Confirm password required"),
   });
 
-  const onSubmit = async (values, actions) => {
+  const onSubmit = async (
+    values: ChangePasswordValues,
+    actions: FormikHelpers<ChangePasswordValues>
+  ) => {
     try {
       await changePassword(values);
       alert("Password changed successfully");
       actions.resetForm();
-    } catch (error) {
+      navigate("/profiles");
+    } catch (error: any) {
       alert(error.response?.data?.message || "Something went wrong");
     } finally {
       actions.setSubmitting(false);
@@ -52,9 +64,10 @@ const ChangePassword = () => {
           onSubmit={onSubmit}
         >
           {(formik) => (
-            <Form className="w-11/12 md:w-7/12 m-auto h-full
-              p-8 rounded-xl shadow-lg grid grid-cols-1 gap-6 items-center bg-white">
-
+            <Form
+              className="w-11/12 md:w-7/12 m-auto h-full
+              p-8 rounded-xl shadow-lg grid grid-cols-1 gap-6 items-center bg-white"
+            >
               {/* Current Password */}
               <div className="flex flex-col gap-1">
                 <label className="font-medium">Current Password</label>
@@ -62,7 +75,7 @@ const ChangePassword = () => {
                   <Field
                     name="currentPassword"
                     type={hide ? "password" : "text"}
-                      className="p-2 rounded-md font-Poppins border border-black/30 w-full"
+                    className="p-2 rounded-md font-Poppins border border-black/30 w-full"
                     placeholder="Current Password"
                   />
                   {hide ? (
@@ -77,7 +90,10 @@ const ChangePassword = () => {
                     />
                   )}
                 </div>
-                <ErrorMessage name="currentPassword" component={ErrorMessagess} />
+                <ErrorMessage
+                  name="currentPassword"
+                  component={ErrorMessagess}
+                />
               </div>
 
               {/* New Password */}
@@ -86,7 +102,7 @@ const ChangePassword = () => {
                 <Field
                   name="newPassword"
                   type={hide ? "password" : "text"}
-                   className="p-2 rounded-md font-Poppins border border-black/30"
+                  className="p-2 rounded-md font-Poppins border border-black/30"
                   placeholder="New Password"
                 />
                 <ErrorMessage name="newPassword" component={ErrorMessagess} />
@@ -121,7 +137,6 @@ const ChangePassword = () => {
               >
                 Change Password
               </motion.button>
-
             </Form>
           )}
         </Formik>
