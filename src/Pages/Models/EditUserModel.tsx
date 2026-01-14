@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import EditUserForm from "../user/EditUserForm";
 
-// ✅ Props type
 interface EditUserModelProps {
   openEditUserModel: boolean;
   setOpenEditUserModel: React.Dispatch<React.SetStateAction<boolean>>;

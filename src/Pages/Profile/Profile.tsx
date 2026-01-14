@@ -4,13 +4,11 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState, AppDispatch } from "../../Redux Toolkit/app/Store";
 import { fetchProfile } from "../../Redux Toolkit/Fetatures/ProfileSlice";
-import { getUserImageUrl } from "../../Services/ImageService";
 
 const Profile: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { user, status } = useSelector((state: RootState) => state.profile);
 
-  // Fetch profile on mount
   useEffect(() => {
     if (!user) {
       dispatch(fetchProfile());

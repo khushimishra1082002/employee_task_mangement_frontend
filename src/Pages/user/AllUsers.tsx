@@ -12,16 +12,14 @@ import EditUserModel from "../Models/EditUserModel";
 import { FaUserShield } from "react-icons/fa";
 import ChangeRoleModal from "../Models/ChangeRoleModal";
 
-// Define the User interface
 interface User {
-  _id: string; // ⭐ MongoDB id
+  _id: string;
   name: string;
   role: string;
   email: string;
   password: string;
 }
 
-// Define the ExpandedComponent props interface
 interface ExpandedComponentProps {
   data: User;
 }
@@ -220,7 +218,16 @@ const AllUsers: React.FC = () => {
         />
       )}
 
-      {openChangeRoleModel && (
+      {/* {openChangeRoleModel && (
+        <ChangeRoleModal
+          open={openChangeRoleModel}
+          setOpen={setOpenChangeRoleModel}
+          userId={selectedUser.id}
+          currentRole={selectedUser.role}
+        />
+      )} */}
+
+      {openChangeRoleModel && selectedUser && (
         <ChangeRoleModal
           open={openChangeRoleModel}
           setOpen={setOpenChangeRoleModel}

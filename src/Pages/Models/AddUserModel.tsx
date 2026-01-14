@@ -3,13 +3,20 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import AddUsersForm from "../user/AddUsersForm";
 
-const AddUserModel = ({ openAddUserModel,setOpenAddUserModel }) => {
+interface AddUserModelProps {
+  openAddUserModel: boolean;
+  setOpenAddUserModel: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AddUserModel: React.FC<AddUserModelProps> = ({
+  openAddUserModel,
+  setOpenAddUserModel,
+}) => {
   return (
-    <>
-      <AnimatePresence>
+    <AnimatePresence>
+      {openAddUserModel && (
         <motion.div
-          className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50
-          overflow-y-auto"
+          className="fixed inset-0 bg-black bg-opacity-60 flex justify-center items-center z-50 overflow-y-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -27,13 +34,12 @@ const AddUserModel = ({ openAddUserModel,setOpenAddUserModel }) => {
             >
               <X className="text-xl" />
             </button>
-            <div>
-              <AddUsersForm setOpenAddUserModel={setOpenAddUserModel} />
-            </div>
+
+            <AddUsersForm setOpenAddUserModel={setOpenAddUserModel} />
           </motion.div>
         </motion.div>
-      </AnimatePresence>
-    </>
+      )}
+    </AnimatePresence>
   );
 };
 

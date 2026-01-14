@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { changeRole } from "../../Services/UserServices"; // path check karo]
+import { changeRole } from "../../Services/UserServices";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../Redux Toolkit/app/Store";
 import { fetchUsers } from "../../Redux Toolkit/Fetatures/UserSlice";
-
 
 interface ChangeRoleModalProps {
   open: boolean;
@@ -25,28 +24,25 @@ const ChangeRoleModal: React.FC<ChangeRoleModalProps> = ({
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
 
-
   const handleUpdateRole = async () => {
-  if (!selectedRole || selectedRole === currentRole) return;
+    if (!selectedRole || selectedRole === currentRole) return;
 
-  setLoading(true);
+    setLoading(true);
 
-  const res = await changeRole(userId, selectedRole);
+    const res = await changeRole(userId, selectedRole);
 
-  setLoading(false);
+    setLoading(false);
 
-  if (res) {
-    toast.success("User role updated successfully 🎉");
+    if (res) {
+      toast.success("User role updated successfully 🎉");
 
-    // 🔁 Redux refresh
-    dispatch(fetchUsers());
+      dispatch(fetchUsers());
 
-    setOpen(false);
-  } else {
-    toast.error("Failed to update role ❌");
-  }
-};
-
+      setOpen(false);
+    } else {
+      toast.error("Failed to update role ");
+    }
+  };
 
   return (
     <AnimatePresence>

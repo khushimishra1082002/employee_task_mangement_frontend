@@ -17,7 +17,13 @@ export const loginUser = async (values: any) => {
   return response.data;
 };
 
-export const changePassword = async (values) => {
+interface ChangePasswordValues {
+  currentPassword: string;
+  newPassword: string;
+  confirmPassword: string;
+}
+
+export const changePassword = async (values: ChangePasswordValues) => {
   const response = await api.post(
     conf.ChangePasswordUrl,
     {

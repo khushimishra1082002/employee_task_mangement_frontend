@@ -66,7 +66,7 @@ const DashboardSidebar: React.FC<SidebarProps> = ({ open, setOpen }) => {
           />
         </div>
         <div className="flex flex-col justify-center items-center">
-          <h4 className="text-gray-900 font-semibold text-lg capitalize">
+          <h4 className="text-gray-900 font-semibold text-lg capitalize font-Roboto">
             {user?.name || "Guest"}
           </h4>
           <span className="text-cyan-600 text-sm font-semibold capitalize">

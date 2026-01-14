@@ -1,4 +1,4 @@
-import api from "../Services/api";
+import api from "./api";
 import conf from "../Conf";
 
 export const getUsers = async () => {
@@ -9,7 +9,7 @@ export const getUsers = async () => {
 
     console.log("API Response:", response.data);
     return response.data;
-  } catch (error) {
+  } catch (error:any) {
     console.error(
       "Error fetching users:",
       error.response?.data || error.message
@@ -18,7 +18,7 @@ export const getUsers = async () => {
   }
 };
 
-export const fetchSingleUserDetail = async (userId) => {
+export const fetchSingleUserDetail = async (userId:string) => {
   try {
     const response = await api.get(`${conf.SingleUserUrl}/${userId}`, {
       headers: { requiresAuth: true },
@@ -26,7 +26,7 @@ export const fetchSingleUserDetail = async (userId) => {
 
     console.log("Full Response:", response);
     return response.data;
-  } catch (error) {
+  } catch (error:any) {
     console.error(
       "Error fetching user:",
       error.response?.data || error.message
@@ -35,7 +35,14 @@ export const fetchSingleUserDetail = async (userId) => {
   }
 };
 
-export const addUser = async (values) => {
+interface UserValues {
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+}
+
+export const addUser = async (values:UserValues) => {
   try {
     if (!values) {
       throw new Error("No user data provided");
@@ -47,13 +54,13 @@ export const addUser = async (values) => {
 
     console.log("User added successfully:", response.data);
     return response.data;
-  } catch (error) {
+  } catch (error:any) {
     console.error("Error adding user:", error.response?.data || error.message);
     throw error;
   }
 };
 
-export const deleteUser = async (id) => {
+export const deleteUser = async (id:string) => {
   if (!id) {
     throw new Error("User ID is required for delete");
   }
@@ -68,7 +75,7 @@ export const deleteUser = async (id) => {
 
     console.log("User deleted successfully:", response.data);
     return response.data;
-  } catch (error) {
+  } catch (error:any) {
     console.error(
       "Error deleting user:",
       error.response?.data || error.message
@@ -78,7 +85,7 @@ export const deleteUser = async (id) => {
 };
 
 
-export const updateUserDetail = async (userId, userData) => {
+export const updateUserDetail = async (userId :string, userData:UserValues) => {
   try {
     const response = await api.put(
       `${conf.EditUserUrl}/${userId}`,
@@ -89,7 +96,7 @@ export const updateUserDetail = async (userId, userData) => {
     );
 
     return response.data;
-  } catch (error) {
+  } catch (error:any) {
     console.error(
       "Error updating user:",
       error.response?.data || error.message
@@ -111,18 +118,18 @@ export const getEmployees = async () => {
   return response.data;
 };
 
-export const changeRole = async (userId, role) => {
+export const changeRole = async (userId:string, role:string) => {
   try {
     const response = await api.put(
       `${conf.ChangeRoleUrl}/${userId}`,
-      { role }, // ✅ object me bhejo
+      { role }, 
       {
         headers: { requiresAuth: true },
       }
     );
 
     return response.data;
-  } catch (error) {
+  } catch (error:any) {
     console.error(
       "Error updating role:",
       error.response?.data || error.message

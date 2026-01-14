@@ -10,16 +10,32 @@ import { Link } from "react-router-dom";
 import EditTaskModel from "../Models/EditTaskModel";
 import DeleteTaskModel from "../Models/DeleteTaskModel";
 
+// interface Task {
+//   _id: string;
+//   title: string;
+//   description: string;
+//   status: string;
+//   assigned_to?: {
+//     name?: string;
+//   };
+//   createdAt?: string;
+// }
+
 interface Task {
   _id: string;
   title: string;
   description: string;
   status: string;
+
   assigned_to?: {
+    _id?: string;
     name?: string;
+    email?: string;
   };
+
   createdAt?: string;
 }
+
 
 const AllTasks: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -33,8 +49,6 @@ const [selectedId, setSelectedId] = useState<string>("");
 
   const { tasks } = useSelector((state: RootState) => state.tasks);
 
-  console.log("ttttt", tasks);
-
   useEffect(() => {
     dispatch(fetchTasks());
   }, [dispatch]);
@@ -44,7 +58,7 @@ const [selectedId, setSelectedId] = useState<string>("");
     setOpenDeleteModel(true);
   };
 
-  const filteredData = tasks.filter((task: Task) => {
+  const filteredData = tasks.filter((task) => {
     const searchLower = search.trim().toLowerCase();
 
     return (

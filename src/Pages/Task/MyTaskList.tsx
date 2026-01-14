@@ -4,10 +4,6 @@ import { BiTask } from "react-icons/bi";
 import { getMyTasks } from "../../Services/EmployeeService";
 import { employeeUpdateTaskStatus } from "../../Services/EmployeeService";
 
-/* =======================
-   TYPES
-======================= */
-
 type TaskStatus = "pending" | "in-progress" | "completed";
 
 interface AssignedTo {
@@ -26,16 +22,11 @@ interface Task {
   updatedAt: string;
 }
 
-/* =======================
-   COMPONENT
-======================= */
-
 const MyTaskList: React.FC = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
   console.log("tasks", tasks);
 
-  // ✅ FETCH TASKS
   useEffect(() => {
     const fetchTasks = async (): Promise<void> => {
       try {
@@ -54,10 +45,8 @@ const MyTaskList: React.FC = () => {
     newStatus: TaskStatus
   ): Promise<void> => {
     try {
-      // 🔥 CALL BACKEND
       await employeeUpdateTaskStatus(_id, newStatus);
 
-      // 🔥 UPDATE UI AFTER SUCCESS
       setTasks((prev) =>
         prev.map((task) =>
           task._id === _id ? { ...task, status: newStatus } : task

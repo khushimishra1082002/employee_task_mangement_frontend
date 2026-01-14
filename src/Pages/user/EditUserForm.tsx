@@ -46,7 +46,7 @@ const EditUserForm: React.FC<EditUserFormProps> = ({
           return;
         }
 
-        // Call the imported function directly and get the data
+    
         const details = await fetchSingleUserDetail(getEditId);
 
         console.log("details", details);

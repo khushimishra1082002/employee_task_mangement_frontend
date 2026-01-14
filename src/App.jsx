@@ -7,7 +7,6 @@ import AllUsers from "./Pages/user/AllUsers";
 import DashboardData from "./Pages/DashboardData";
 import AllTasks from "./Pages/Task/AllTasks";
 import MainDashboardPage from "./Components/MainDashboardPage";
-import MyTask from "./Pages/Employee/MyTask";
 import AddUsersForm from "./Pages/user/AddUsersForm";
 import EditUserForm from "./Pages/user/EditUserForm";
 import EditTasks from "./Pages/Task/EditTasks";
@@ -22,7 +21,6 @@ import EmployeeCompletedTask from "./Pages/Task/EmployeeCompletedTask";
 import EmployeePendingTask from "./Pages/Task/EmployeePendingTask";
 import AssignedTasks from "./Pages/Task/AssignedTasks";
 import Login from "./Pages/Login";
-import MyTaskTable from "./Pages/Employee/MyTaskTable";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MyTaskList from "./Pages/Task/MyTaskList";
@@ -73,7 +71,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          <Route path="myTaskTable" element={<MyTaskTable />} />
 
           <Route path="addUsersForm" element={<AddUsersForm />} />
           <Route path="editUsersForm/:id" element={<EditUserForm />} />
@@ -94,7 +91,6 @@ const App = () => {
             element={<EmployeePendingTask />}
           />
           <Route path="login" element={<Login />} />
-          <Route path="myTaskTable" element={<MyTaskTable />} />
           <Route path="unauthorized" element={<Unauthorized />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />

@@ -4,11 +4,9 @@ import * as Yup from "yup";
 import { Camera } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
 import ErrorMessagess from "../ErrorMessagess";
-import { getUserImageUrl } from "../../Services/ImageService";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../Redux Toolkit/app/Store"; // make sure path is correct
+import { AppDispatch, RootState } from "../../Redux Toolkit/app/Store";
 import {
   fetchProfile,
   updateProfile,
@@ -25,8 +23,6 @@ const EditProfile: React.FC = () => {
   const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.profile.user);
   const [loading, setLoading] = useState(true);
-
-  // local preview for image before submitting
   const [previewImage, setPreviewImage] = useState<File | null>(null);
 
   useEffect(() => {
@@ -62,13 +58,12 @@ const EditProfile: React.FC = () => {
       formData.append("email", values.email);
       if (values.image) formData.append("image", values.image);
 
-      const updatedUser = await dispatch(updateProfile(formData)).unwrap(); // unwrap to get payload
-      setPreviewImage(null); // clear local preview
+      const updatedUser = await dispatch(updateProfile(formData)).unwrap();
+      setPreviewImage(null);
 
       toast.success("Profile updated successfully");
       actions.setSubmitting(false);
 
-      // navigate only if needed
       navigate("/dashboard/profiles");
     } catch (error: any) {
       console.error(error);
@@ -93,8 +88,8 @@ const EditProfile: React.FC = () => {
                 <img
                   src={
                     previewImage
-                      ? URL.createObjectURL(previewImage) // show selected image
-                      : user?.image // show current image from backend
+                      ? URL.createObjectURL(previewImage)
+                      : user?.image
                   }
                   className="w-full h-full object-cover"
                 />

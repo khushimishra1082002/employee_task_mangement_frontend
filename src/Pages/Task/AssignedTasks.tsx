@@ -15,7 +15,7 @@ interface AssignTaskValues {
   title: string;
   description: string;
   status: string;
-  assigned_to: string; // MongoDB ObjectId as string
+  assigned_to: string; 
 }
 
 interface Employee {
@@ -60,10 +60,9 @@ const AssignedTasks: React.FC = () => {
 
       console.log("response", response);
 
-      // backend already returns correct task object
+     
       const createdTask = response.task ?? response;
 
-      // OPTION A (BEST): just refetch
       dispatch(fetchTasks());
 
       resetForm();
@@ -77,7 +76,7 @@ const AssignedTasks: React.FC = () => {
     const fetchEmployees = async () => {
       try {
         const res = await getEmployees();
-        setEmployees(res.users); // 👈 important
+        setEmployees(res.users); 
       } catch (error) {
         console.error("Failed to fetch employees");
       } finally {

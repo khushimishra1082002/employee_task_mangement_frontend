@@ -7,7 +7,7 @@ import { RiLockPasswordLine } from "react-icons/ri";
 export interface MenuItem {
   name: string;
   path: string;
-  icon: IconType; // 👈 component type
+  icon: IconType; 
 }
 
 export type RoleMenus = {

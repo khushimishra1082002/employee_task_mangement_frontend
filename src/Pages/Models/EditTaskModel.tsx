@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import EditTasks from "../Task/EditTasks";
 
-/* ✅ Props typing */
 interface EditTaskModelProps {
   EditTaskDetailModel: boolean;
   setEditTaskDetailModel: React.Dispatch<React.SetStateAction<boolean>>;

@@ -14,8 +14,8 @@ interface TaskValues {
   title: string;
   status: string;
   description: string;
-  name: string; // from assigned_to.name
-  created_at?: string; // from createdAt
+  name: string; 
+  created_at?: string; 
 }
 
 const EditTasks: React.FC<{
@@ -68,6 +68,13 @@ const EditTasks: React.FC<{
     // description: Yup.string().required("Required"),
   });
 
+  interface UpdateTaskPayload {
+  title: string;
+  description: string;
+  status: string;
+}
+
+
   const onSubmit = async (
     values: TaskValues,
     helpers: FormikHelpers<TaskValues>
@@ -75,7 +82,7 @@ const EditTasks: React.FC<{
     const payload = {
       title: values.title,
       description: values.description,
-      status: values.status.toLowerCase(), // 🔥 YAHI CHANGE
+      status: values.status.toLowerCase(),
     };
 
     try {
@@ -85,8 +92,8 @@ const EditTasks: React.FC<{
         toast.success("Task updated successfully!");
         dispatch(fetchTasks());
 
-        setEditTaskDetailModel(false); // ✅ modal band
-        setSingleTaskData(null); // ✅ refresh bug fix
+        setEditTaskDetailModel(false); 
+        setSingleTaskData(null); 
       }
     } catch (error) {
       toast.error("Failed to update task");

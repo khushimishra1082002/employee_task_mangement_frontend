@@ -8,23 +8,22 @@ export const getMyProfile = async () => {
       headers: { requiresAuth: true },
     });
     console.log("API Response:", response.data);
-    return response.data; // returns full user object
+    return response.data; 
   } catch (error:any) {
     console.error("Error fetching profile:", error.response?.data || error.message);
     throw error;
   }
 };
 
-// 🔹 Update profile with FormData
 export const updateMyProfile = async (formData: FormData) => {
   try {
     const response = await api.put(conf.EditProfileUrl, formData, {
       headers: {
         requiresAuth: true,
-        "Content-Type": "multipart/form-data", // important for file upload
+        "Content-Type": "multipart/form-data", 
       },
     });
-    return response.data; // must return updated user object
+    return response.data; 
   } catch (error:any) {
     console.error("Error updating profile:", error.response?.data || error.message);
     throw error;
