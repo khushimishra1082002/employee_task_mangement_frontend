@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import ErrorMessagess from "../Pages/ErrorMessagess";
 import { changePassword } from "../Services/AuthService";
 import { useNavigate } from "react-router-dom";
+import { RiLockPasswordLine } from "react-icons/ri";
 
 interface ChangePasswordValues {
   currentPassword: string;
@@ -50,7 +51,7 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="py-6">
+    <div className="py-6 w-full h-full ">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -67,6 +68,12 @@ const ChangePassword = () => {
               className="w-11/12 md:w-7/12 m-auto 
               p-8 rounded-xl shadow-lg grid grid-cols-1 gap-6 items-center bg-white"
             >
+              <div className="flex gap-2 items-center">
+                <RiLockPasswordLine className="text-2xl" />
+                <h2 className="text-xl font-body font-medium">
+                  Change Password
+                </h2>
+              </div>
               {/* Current Password */}
               <div className="flex flex-col gap-1">
                 <label className="font-medium">Current Password</label>

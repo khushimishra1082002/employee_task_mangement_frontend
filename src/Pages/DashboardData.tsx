@@ -94,35 +94,35 @@ const DashboardData: React.FC = () => {
       title: "Total Employee",
       count: allEmployeessTotalTasks,
       color: "from-cyan-500 to-cyan-200",
-      route: "/tasks/in-progress",
+      // route: "/tasks/in-progress",
     },
     {
       icon: <GrTasks className="text-4xl text-gray-600" />,
       title: "All Tasks",
       count: allEmployeessTotalTasks,
       color: "from-gray-500 to-gray-300",
-      route: "/tasks",
+      // route: "/tasks",
     },
     {
       icon: <TbProgress className="text-4xl text-yellow-600" />,
       title: "In Progress",
       count: allEmployeessinProgressTasks,
       color: "from-yellow-500 to-yellow-300",
-      route: "/tasks/in-progress",
+      // route: "/tasks/in-progress",
     },
     {
       icon: <MdPending className="text-4xl text-red-600" />,
       title: "Pending",
       count: allEmployeessPendingTasks,
       color: "from-red-500 to-red-300",
-      route: "/tasks/pending",
+      // route: "/tasks/pending",
     },
     {
       icon: <SiTicktick className="text-4xl text-green-600" />,
       title: "Completed",
       count: allEmployeecompletedTasks,
       color: "from-green-500 to-green-300",
-      route: "/tasks/completed",
+      // route: "/tasks/completed",
     },
   ];
 
@@ -132,28 +132,28 @@ const DashboardData: React.FC = () => {
       title: "All Tasks",
       count: allEmployeessTotalTasks,
       color: "from-gray-500 to-gray-300",
-      route: "/tasks",
+      // route: "/tasks",
     },
     {
       icon: <TbProgress className="text-4xl text-yellow-600" />,
       title: "In Progress",
       count: allEmployeessinProgressTasks,
       color: "from-yellow-500 to-yellow-300",
-      route: "/tasks/in-progress",
+      // route: "/tasks/in-progress",
     },
     {
       icon: <MdPending className="text-4xl text-red-600" />,
       title: "Pending",
       count: allEmployeessPendingTasks,
       color: "from-red-500 to-red-300",
-      route: "/tasks/pending",
+      // route: "/tasks/pending",
     },
     {
       icon: <SiTicktick className="text-4xl text-green-600" />,
       title: "Completed",
       count: allEmployeecompletedTasks,
       color: "from-green-500 to-green-300",
-      route: "/tasks/completed",
+      // route: "/tasks/completed",
     },
   ];
 
@@ -163,28 +163,28 @@ const DashboardData: React.FC = () => {
       title: "My Tasks",
       count: employeeAllTasks.length, // ✅
       color: "from-gray-500 to-gray-300",
-      route: "/tasks/my-tasks",
+      // route: "/tasks/my-tasks",
     },
     {
       icon: <MdPending className="text-4xl text-red-600" />,
       title: "Pending",
       count: pendingEmployeeTask.length,
       color: "from-red-500 to-red-300",
-      route: "/dashboard/employeePendingTasks",
+      // route: "/dashboard/employeePendingTasks",
     },
     {
       icon: <SiTicktick className="text-4xl text-green-600" />,
       title: "Completed",
       count: completedEmployeeTask.length,
       color: "from-green-500 to-green-300",
-      route: "/dashboard/employeeCompletedTasks",
+      // route: "/dashboard/employeeCompletedTasks",
     },
     {
       icon: <TbProgress className="text-4xl text-blue-600" />,
       title: "In Progress",
       count: inProgressEmployeeTasks.length,
       color: "from-blue-500 to-blue-300",
-      route: "/dashboard/employeeInProgressTasks",
+      // route: "/dashboard/employeeInProgressTasks",
     },
   ];
 
@@ -196,8 +196,8 @@ const DashboardData: React.FC = () => {
       : dashboardItemsEmployee;
 
   return (
-    <div className="space-y-2">
-      <div className="p-6 space-y-5 bg-white">
+    <div className="space-y-2 w-full h-full bg-white p-8">
+      <div className=" space-y-5 ">
         <h1 className="text-xl font-Roboto font-medium flex items-center gap-2 text-gray-800">
           <BiTask className="text-2xl text-green-500" />
           Task Overview

@@ -22,7 +22,8 @@ const MainDashboardPage: React.FC = () => {
           </header>
 
           {/* MainBody */}
-          <div className=" h-[90vh] overflow-auto scrollbar-thumb-primary
+          <div className="h-[90vh] 
+          overflow-auto scrollbar-thumb-primary 
            scrollbar-thin p-3  bg-gray-100 max-w-[calc(100% - 60px)] ">
             {/* All content Goes Here */}
             <Outlet />
