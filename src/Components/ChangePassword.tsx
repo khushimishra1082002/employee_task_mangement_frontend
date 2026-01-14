@@ -50,13 +50,12 @@ const ChangePassword = () => {
   };
 
   return (
-    <div>
+    <div className="py-6">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className=" m-auto p-8 border rounded-xl shadow-2xl
-         flex justify-center items-center"
+        className=""
       >
         <Formik
           initialValues={initialValues}
@@ -65,7 +64,7 @@ const ChangePassword = () => {
         >
           {(formik) => (
             <Form
-              className="w-11/12 md:w-7/12 m-auto h-full
+              className="w-11/12 md:w-7/12 m-auto 
               p-8 rounded-xl shadow-lg grid grid-cols-1 gap-6 items-center bg-white"
             >
               {/* Current Password */}
