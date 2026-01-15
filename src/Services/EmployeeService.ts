@@ -1,6 +1,9 @@
 import api from "./api";
 import conf from "../Conf";
 
+console.log(conf.MyTaskUrl);
+
+
 export const getMyTasks = async () => {
   try {
     const response = await api.get(conf.MyTaskUrl, {

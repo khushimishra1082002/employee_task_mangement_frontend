@@ -28,17 +28,19 @@ const MyTaskList: React.FC = () => {
   console.log("tasks", tasks);
 
   useEffect(() => {
-    const fetchTasks = async (): Promise<void> => {
-      try {
-        const response = await getMyTasks();
-        setTasks(response.tasks as Task[]);
-      } catch (error) {
-        console.error("Error fetching tasks", error);
-      }
-    };
+  const fetchTasks = async (): Promise<void> => {
+    try {
+      const response = await getMyTasks();
+      console.log("Fetched tasks:", response.tasks); // ✅ yahan dekho
+      setTasks(response.tasks);
+    } catch (error) {
+      console.error("Error fetching tasks", error);
+    }
+  };
 
-    fetchTasks();
-  }, []);
+  fetchTasks();
+}, []);
+
 
   const handleStatusChange = async (
     _id: string,
