@@ -41,6 +41,8 @@ const DashboardData: React.FC = () => {
     users: User[];
   };
 
+  console.log("users", users);
+
   const token = sessionStorage.getItem("token");
   console.log("token", token);
 
@@ -54,45 +56,47 @@ const DashboardData: React.FC = () => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-
   const allEmployeessPendingTasks = tasks.filter(
-    (task) => task.status === "pending"
+    (task) => task.status === "pending",
   ).length;
   console.log("allEmployeessPendingTasks", allEmployeessPendingTasks);
 
   const allEmployeecompletedTasks = tasks.filter(
-    (task) => task.status === "completed"
+    (task) => task.status === "completed",
   ).length;
   console.log("allEmployeecompletedTasks", allEmployeecompletedTasks);
 
   const allEmployeessinProgressTasks = tasks.filter(
-    (task) => task.status === "in-progress"
+    (task) => task.status === "in-progress",
   ).length;
   const allEmployeessTotalTasks = tasks.length;
 
-
-  // Employee tasks status 
+  // Employee tasks status
 
   const employeeAllTasks = tasks.filter(
-    (task) => task.assigned_to?._id === userId
-  )
+    (task) => task.assigned_to?._id === userId,
+  );
 
   const pendingEmployeeTask = employeeAllTasks.filter(
-    (task) => task.status === "pending"
+    (task) => task.status === "pending",
   );
 
   const completedEmployeeTask = employeeAllTasks.filter(
-    (task) => task.status === "completed"
+    (task) => task.status === "completed",
   );
   const inProgressEmployeeTasks = employeeAllTasks.filter(
-    (task) => task.status === "in-progress"
+    (task) => task.status === "in-progress",
   );
+
+  const totalEmployees = users.filter(
+    (user) => user.role === "employee",
+  ).length;
 
   const dashboardItemsAdmin = [
     {
       icon: <FaUser className="text-4xl text-cyan-500" />,
       title: "Total Employee",
-      count: allEmployeessTotalTasks,
+      count: totalEmployees,
       color: "from-cyan-500 to-cyan-200",
       // route: "/tasks/in-progress",
     },
@@ -192,8 +196,8 @@ const DashboardData: React.FC = () => {
     userRole === "admin"
       ? dashboardItemsAdmin
       : userRole === "subadmin"
-      ? dashboardItemsSubadmin
-      : dashboardItemsEmployee;
+        ? dashboardItemsSubadmin
+        : dashboardItemsEmployee;
 
   return (
     <div className="space-y-2 w-full h-full bg-white p-8">
